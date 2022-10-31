@@ -20,4 +20,6 @@ img{
 .menu{
     margin: 1rem 0 0 1rem;
     background: linear-gradient(0deg, rgba(244, 143, 177, 1) 0%, rgba(233, 30, 99, 1) 100%);
+    position: absolute;
+    top: 0;
 }
