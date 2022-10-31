@@ -30,9 +30,10 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { NavComponent } from "./components/nav/nav.component";
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
+import { TecnicoListComponent } from './components/tecnico/tecnico-list/tecnico-list.component';
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, HomeComponent, HeaderComponent],
+  declarations: [AppComponent, NavComponent, HomeComponent, HeaderComponent, TecnicoListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
