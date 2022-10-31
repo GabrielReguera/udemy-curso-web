@@ -28,9 +28,10 @@ import { MatTableModule } from "@angular/material/table";
 import { MatToolbarModule } from "@angular/material/toolbar";
 
 import { NavComponent } from "./components/nav/nav.component";
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, NavComponent],
+  declarations: [AppComponent, NavComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
