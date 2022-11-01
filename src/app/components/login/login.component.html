@@ -16,7 +16,8 @@
                 placeholder="****">
         </mat-form-field>
         <div class="button">
-            <button [disabled]="!validaCampos()" mat-raised-button color="primary" class="mat-elevation-z4">Login</button>
+            <button [disabled]="!validaCampos()" (click)="logar()" mat-raised-button color="primary"
+                class="mat-elevation-z4">Login</button>
         </div>
     </form>
 </div>

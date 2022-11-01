@@ -49,6 +49,10 @@ img{
     width: 100%;
 }
 
+.mat-form-field-flex{
+    background-color: #b9b9b9 !important;
+}
+
 .button{
     display: flex;
     justify-content: center;
