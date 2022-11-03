@@ -31,4 +31,8 @@ export class AuthService {
     }
     return false;
   }
+
+  clearToken(){
+    localStorage.clear();
+  }
 }
