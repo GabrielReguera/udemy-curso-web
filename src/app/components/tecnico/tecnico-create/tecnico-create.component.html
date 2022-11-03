@@ -1,0 +1,40 @@
+<div class="container">
+    <form class="form">
+        <h1 class="fullWidth">Cadastrar Técnico</h1>
+        <img class="fullWidth" src="assets/img/tecnico-create.svg" alt="Moço olhando uns gráficos">
+
+        <section class="section">
+            <mat-checkbox [color]="['primary']" class="margin">Admin</mat-checkbox>
+            <mat-checkbox [color]="['primary']" class="margin">Cliente</mat-checkbox>
+            <mat-checkbox [color]="['primary']" class="margin">Técninco</mat-checkbox>
+        </section>
+
+        <mat-form-field class="fullWidth" appearance="legacy">
+            <mat-label>Nome</mat-label>
+            <input matInput placeholder="Clebinho">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth" appearance="legacy">
+            <mat-label>CPF</mat-label>
+            <input matInput placeholder="***.***.***-**">
+            <mat-icon matSuffix>123</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth" appearance="legacy">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="clebinho@gmail.com">
+            <mat-icon matSuffix>mail</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth" appearance="legacy">
+            <mat-label>Senha</mat-label>
+            <input type="password" matInput placeholder="coxinha123@">
+            <mat-icon matSuffix>password</mat-icon>
+        </mat-form-field>
+
+        <button class="mat-elevation-z8" mat-stroked-button color="warn">Cancelar</button>
+        <button class="button-cadastro mat-elevation-z8" mat-flat-button color="primary">Cadastrar</button>
+    </form>
+    <p>By Reguera-Front</p>
+</div>
