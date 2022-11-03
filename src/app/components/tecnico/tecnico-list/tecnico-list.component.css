@@ -12,11 +12,21 @@ th {
     width: 25%;
 }
 
-.container{
+.container {
     width: 85%;
     margin: 1rem auto;
 }
 
-.container h1{
+.container h1 {
     text-align: center;
+}
+
+.edit {
+    color: #e91e63;
+    text-shadow: 0 0 3px black;
+}
+
+.delete {
+    color: #c31d1d;
+    text-shadow: 0 0 3px black;
 }
