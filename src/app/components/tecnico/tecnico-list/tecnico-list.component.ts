@@ -3,6 +3,7 @@ import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 import { Tecnico } from "src/app/models/tecnico";
+import { TecnicoService } from "src/app/services/tecnico.service";
 
 @Component({
   selector: "app-tecnico-list",
@@ -28,14 +29,12 @@ export class TecnicoListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() {}
+  constructor(private tecnicoService: TecnicoService) {}
 
-  ngOnInit(): void {}
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+  ngOnInit(): void {
+    this.findAll();
   }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -44,5 +43,14 @@ export class TecnicoListComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  findAll() {
+    this.tecnicoService.findAll().subscribe((rs) => {
+      this.ELEMENT_DATA = rs;
+      this.dataSource = new MatTableDataSource<Tecnico>(rs);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
   }
 }
