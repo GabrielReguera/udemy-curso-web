@@ -3,6 +3,7 @@ import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 import { Chamado } from "src/app/models/chamado";
+import { ChamadoService } from "src/app/services/chamado.service";
 
 @Component({
   selector: "app-chamado-list",
@@ -10,21 +11,8 @@ import { Chamado } from "src/app/models/chamado";
   styleUrls: ["./chamado-list.component.css"],
 })
 export class ChamadoListComponent implements OnInit {
-  ELEMENT_DATA: Chamado[] = [
-    {
-      id: 1,
-      dataAbertura: "21/06/2021",
-      dataFechamento: "21/06/2021",
-      prioridade: "ALTA",
-      status: "ANDAMENTO",
-      titulo: "Chamado 1",
-      descricao: "Teste chamado 1",
-      tecnico: 1,
-      cliente: 6,
-      nomeCliente: "Valdir Cezar",
-      nomeTecnico: "Albert Einstein",
-    },
-  ];
+  ELEMENT_DATA: Chamado[] = [];
+  FILTERED_DATA: Chamado[] = [];
 
   displayedColumns: string[] = [
     "id",
@@ -41,9 +29,11 @@ export class ChamadoListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() {}
+  constructor(private chamadoSerivce: ChamadoService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.findAll();
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -52,5 +42,45 @@ export class ChamadoListComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  findAll(): void {
+    this.chamadoSerivce.findAll().subscribe((rs) => {
+      this.ELEMENT_DATA = rs;
+      this.dataSource = new MatTableDataSource<Chamado>(this.ELEMENT_DATA);
+      this.dataSource.paginator = this.paginator;
+    });
+  }
+
+  retornaStatus(status: any): string {
+    if (status == "0") {
+      return "ABERTO";
+    } else if (status == "1") {
+      return "EM ANDAMENTO";
+    } else {
+      return "ENCERRADO";
+    }
+  }
+
+  retornaPrioriadade(pri: any): string {
+    if (pri == "0") {
+      return "BAIXA";
+    } else if (pri == "1") {
+      return "MÉDIA";
+    } else {
+      return "ALTA";
+    }
+  }
+
+  orderByStatus(status: any): void {
+    let list: Chamado[] = [];
+    this.ELEMENT_DATA.forEach((element) => {
+      if (element.status == status) {
+        list.push(element);
+      }
+    });
+    this.FILTERED_DATA = list;
+    this.dataSource = new MatTableDataSource<Chamado>(this.FILTERED_DATA);
+    this.dataSource.paginator = this.paginator;
   }
 }

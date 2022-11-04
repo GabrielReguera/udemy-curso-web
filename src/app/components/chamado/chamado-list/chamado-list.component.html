@@ -1,6 +1,6 @@
 <div class="container">
     <h1>Lista de chamados</h1>
-    <button  mat-stroked-button color="primary" class="mat-elevation-z8">Novo Chamado</button>
+    <button mat-stroked-button color="primary" class="mat-elevation-z8">Novo Chamado</button>
 
     <mat-form-field appearance="standard">
         <mat-label>Filter</mat-label>
@@ -8,14 +8,14 @@
     </mat-form-field>
 
     <mat-radio-group color="primary">
-        <mat-radio-button >ABERTO</mat-radio-button>
-        <mat-radio-button >ANDAMENTO</mat-radio-button>
-        <mat-radio-button >ENCERRANDO</mat-radio-button>
-      </mat-radio-group>
+        <mat-radio-button (click)="orderByStatus(0)" value="a">ABERTO</mat-radio-button>
+        <mat-radio-button (click)="orderByStatus(1)" value="b">ANDAMENTO</mat-radio-button>
+        <mat-radio-button (click)="orderByStatus(2)" value="c">ENCERRANDO</mat-radio-button>
+    </mat-radio-group>
 
 
     <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="ELEMENT_DATA" matSort>
+        <table mat-table [dataSource]="dataSource" matSort>
 
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
@@ -44,12 +44,12 @@
 
             <ng-container matColumnDef="prioridade">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Prioridade </th>
-                <td mat-cell *matCellDef="let row"> {{row.prioridade}} </td>
+                <td mat-cell *matCellDef="let row"> {{retornaPrioriadade(row.prioridade)}} </td>
             </ng-container>
 
             <ng-container matColumnDef="status">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-                <td mat-cell *matCellDef="let row"> {{row.status}} </td>
+                <td mat-cell *matCellDef="let row"> {{retornaStatus(row.status)}} </td>
             </ng-container>
 
             <ng-container matColumnDef="acoes">
@@ -58,7 +58,7 @@
                     <a routerLink="update/{{row.id}}">
                         <i class="material-icons edit">edit</i>
                     </a>
-                    <a >
+                    <a>
                         <i class="material-icons delete">visibility</i>
                     </a>
                 </td>
