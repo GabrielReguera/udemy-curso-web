@@ -1,0 +1,39 @@
+table {
+    width: 100%;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+td,
+th {
+    width: 25%;
+}
+
+.container {
+    width: 85%;
+    margin: 1rem auto;
+}
+
+.container h1 {
+    text-align: center;
+}
+
+.edit {
+    color: #e91e63;
+    text-shadow: 0 0 3px black;
+}
+
+.delete {
+    color: white;
+    text-shadow: 0 0 3px black;
+    cursor: pointer;
+}
+
+mat-radio-group{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
