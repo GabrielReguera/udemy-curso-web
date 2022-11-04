@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
+import { ToastrService } from "ngx-toastr";
 import { Tecnico } from "src/app/models/tecnico";
 import { TecnicoService } from "src/app/services/tecnico.service";
 
@@ -29,12 +30,14 @@ export class TecnicoListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private tecnicoService: TecnicoService) {}
+  constructor(
+    private tecnicoService: TecnicoService,
+    private toast: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.findAll();
   }
-
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -53,4 +56,22 @@ export class TecnicoListComponent implements OnInit {
       this.dataSource.sort = this.sort;
     });
   }
+
+  delete(id: any): void {
+    this.tecnicoService.delete(id).subscribe({
+      next: () => {
+        this.toast.success("Técninco Deletado com sucesso", "Delete");
+      },
+      error: (e) => {
+        if (e.error.errors) {
+          e.error.errors.forEach((element) => {
+            this.toast.error(element.message, "Error");
+          });
+        } else {
+          this.toast.error(e.error.message);
+        }
+      },
+    });
+  }
+
 }

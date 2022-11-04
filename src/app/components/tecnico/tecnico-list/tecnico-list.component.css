@@ -29,4 +29,5 @@ th {
 .delete {
     color: #c31d1d;
     text-shadow: 0 0 3px black;
+    cursor: pointer;
 }
