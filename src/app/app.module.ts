@@ -29,13 +29,16 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 
 import { NgxMaskModule } from "ngx-mask";
 import { ToastrModule } from "ngx-toastr";
+import { ClienteCreateComponent } from "./components/cliente/cliente-create/cliente-create.component";
+import { ClienteListComponent } from "./components/cliente/cliente-list/cliente-list.component";
+import { ClienteUpdateComponent } from "./components/cliente/cliente-update/cliente-update.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { HomeComponent } from "./components/home/home.component";
 import { LoginComponent } from "./components/login/login.component";
 import { NavComponent } from "./components/nav/nav.component";
-import { TecnicoCreateComponent } from './components/tecnico/tecnico-create/tecnico-create.component';
+import { TecnicoCreateComponent } from "./components/tecnico/tecnico-create/tecnico-create.component";
 import { TecnicoListComponent } from "./components/tecnico/tecnico-list/tecnico-list.component";
-import { TecnicoUpdateComponent } from './components/tecnico/tecnico-update/tecnico-update.component';
+import { TecnicoUpdateComponent } from "./components/tecnico/tecnico-update/tecnico-update.component";
 import { AuthInterceptorProvider } from "./interceptors/auth.interceptor";
 
 @NgModule({
@@ -48,6 +51,9 @@ import { AuthInterceptorProvider } from "./interceptors/auth.interceptor";
     LoginComponent,
     TecnicoCreateComponent,
     TecnicoUpdateComponent,
+    ClienteCreateComponent,
+    ClienteListComponent,
+    ClienteUpdateComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,7 +85,7 @@ import { AuthInterceptorProvider } from "./interceptors/auth.interceptor";
       closeButton: true,
       progressBar: true,
     }),
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
   ],
   providers: [AuthInterceptorProvider],
   bootstrap: [AppComponent],
