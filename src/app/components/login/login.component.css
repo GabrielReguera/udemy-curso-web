@@ -57,3 +57,7 @@ img{
     display: flex;
     justify-content: center;
 }
+
+mat-icon{
+    color: white;
+}
