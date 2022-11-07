@@ -14,13 +14,13 @@ import { ClienteService } from "src/app/services/cliente.service";
 export class ClienteListComponent implements OnInit {
   ELEMENT_DATA: Cliente[] = [
     {
-      id: 1,
-      nome: "vladimir",
-      cpf: "123123123",
-      email: "aaaa@a.com",
-      senha: "1233212",
-      perfis: ["0"],
-      dataCriacao: "31/10/2022",
+      id: "",
+      nome: "",
+      cpf: "",
+      email: "",
+      senha: "",
+      perfis: [""],
+      dataCriacao: "",
     },
   ];
 
@@ -71,7 +71,10 @@ export class ClienteListComponent implements OnInit {
           this.toast.error(e.error.message);
         }
       },
+      complete: () =>
+        (this.dataSource.data = this.dataSource.data.filter(
+          (u: Cliente) => u.id !== id
+        )),
     });
   }
-
 }

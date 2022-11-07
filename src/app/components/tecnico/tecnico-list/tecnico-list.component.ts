@@ -71,7 +71,10 @@ export class TecnicoListComponent implements OnInit {
           this.toast.error(e.error.message);
         }
       },
+      complete: () =>
+        (this.dataSource.data = this.dataSource.data.filter(
+          (u: Tecnico) => u.id !== id
+        )),
     });
   }
-
 }
